@@ -2,7 +2,11 @@ count = 1
 over100 = False
 questionAnswer = []
 AnswersOnly = []
-AnswersOnly.append("---------NO ASNWER FOR THIS QUESTION MY B GANG U KEEP STUDYING HARD DOE FAM \n")
+
+import colorama
+from colorama import Fore, Back, Style
+colorama.init()
+
 
 def playGame(questionAnswer):
 	questionCount = 0
@@ -13,13 +17,17 @@ def playGame(questionAnswer):
 		UserAnswer = input("what is your answer? ").upper()
 		correctAnswer = AnswersOnly[questionCount]
 		if(UserAnswer == correctAnswer[3:4] or UserAnswer == correctAnswer[4:5]):
-			print("CORRECT!")
+			print(Fore.GREEN + "CORRECT!")
 			print(correctAnswer.strip())
 			print()
-		else:
-			print("WRONGGG")
-			print(correctAnswer)
+			print(Style.RESET_ALL)
 
+		else:
+			print(Fore.RED + "WRONGGGG!")
+			print(correctAnswer)
+			print()
+			print(Style.RESET_ALL)
+			
 		questionCount+=1
 
 def addQuestions(page):
@@ -106,7 +114,7 @@ def addQuestions(page):
 			AnswersOnly.append(QSet)
 
 import PyPDF2
-pdfFileObj = open('2014.pdf', 'rb') 
+pdfFileObj = open('2014.pdf', 'rb')  #2014, 2018, 2022, 2021
 pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
 # creating a page object
 
@@ -117,7 +125,7 @@ for i in range(1,pdfReader.numPages):
 	count+=1
 
 AnswersOnly.append("")
-print(questionAnswer)
+#print(questionAnswer)
 playGame(questionAnswer)
 
 pdfFileObj.close()
