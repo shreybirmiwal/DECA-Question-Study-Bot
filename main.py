@@ -1,4 +1,4 @@
-count = 0
+count = 1
 over100 = False
 questionAnswer = []
 AnswersOnly = []
@@ -29,10 +29,6 @@ def addQuestions(page):
 	completed = False;
 
 	while(not completed):
-
-		if(count == 101):
-			completed = True
-			break
 
 		if(count > 100):
 			start = page.index(str(count-100)+".")
@@ -110,19 +106,18 @@ def addQuestions(page):
 			AnswersOnly.append(QSet)
 
 import PyPDF2
-pdfFileObj = open('2018.pdf', 'rb') 
+pdfFileObj = open('2014.pdf', 'rb') 
 pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
 # creating a page object
 
 for i in range(1,pdfReader.numPages):
 	pageObj = pdfReader.getPage(i) 
 	recieved = (pageObj.extractText())
-	print(recieved)
 	addQuestions(recieved)
 	count+=1
 
 AnswersOnly.append("")
-questionAnswer.pop(0)
+print(questionAnswer)
 playGame(questionAnswer)
 
 pdfFileObj.close()
