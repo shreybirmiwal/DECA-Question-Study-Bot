@@ -1,6 +1,16 @@
 count = 0
 over100 = False
 questionAnswer = []
+AnswersOnly = []
+AnswersOnly.append("NO ASNWER FOR THIS QUESTION MY B GANG U KEEP STUDYING HARD DOE FAM")
+
+def playGame(questionAnswer):
+	questionCount = 0
+	for element in questionAnswer:
+		for item in element:
+			print(item)
+		print(AnswersOnly[questionCount])
+		questionCount+=1
 
 def addQuestions(page):
 	global count
@@ -87,9 +97,7 @@ def addQuestions(page):
 			questionAnswer.append(answerChoices)
 		
 		else:
-			#over question 100, now only asnwers, add them to the current list
-			#print(QSet)
-			questionAnswer[count-100-1].append(QSet)
+			AnswersOnly.append(QSet)
 
 import PyPDF2
 pdfFileObj = open('2022.pdf', 'rb') 
@@ -102,8 +110,7 @@ for i in range(1,pdfReader.numPages):
 	addQuestions(recieved)
 	count+=1
 
-for element in questionAnswer:
-	print(element)
-	print()
+AnswersOnly.append("")
+playGame(questionAnswer)
 
 pdfFileObj.close()
