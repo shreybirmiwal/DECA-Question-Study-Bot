@@ -2,14 +2,24 @@ count = 0
 over100 = False
 questionAnswer = []
 AnswersOnly = []
-AnswersOnly.append("NO ASNWER FOR THIS QUESTION MY B GANG U KEEP STUDYING HARD DOE FAM")
+AnswersOnly.append("---------NO ASNWER FOR THIS QUESTION MY B GANG U KEEP STUDYING HARD DOE FAM \n")
 
 def playGame(questionAnswer):
 	questionCount = 0
 	for element in questionAnswer:
 		for item in element:
-			print(item)
-		print(AnswersOnly[questionCount])
+			print(item.strip())
+
+		UserAnswer = input("what is your answer? ").upper()
+		correctAnswer = AnswersOnly[questionCount]
+		if(UserAnswer == correctAnswer[3:4] or UserAnswer == correctAnswer[4:5]):
+			print("CORRECT!")
+			print(correctAnswer.strip())
+			print()
+		else:
+			print("WRONGGG")
+			print(correctAnswer)
+
 		questionCount+=1
 
 def addQuestions(page):
@@ -100,17 +110,19 @@ def addQuestions(page):
 			AnswersOnly.append(QSet)
 
 import PyPDF2
-pdfFileObj = open('2022.pdf', 'rb') 
+pdfFileObj = open('2018.pdf', 'rb') 
 pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
 # creating a page object
 
 for i in range(1,pdfReader.numPages):
 	pageObj = pdfReader.getPage(i) 
 	recieved = (pageObj.extractText())
+	print(recieved)
 	addQuestions(recieved)
 	count+=1
 
 AnswersOnly.append("")
+questionAnswer.pop(0)
 playGame(questionAnswer)
 
 pdfFileObj.close()
