@@ -114,7 +114,9 @@ def addQuestions(page):
 			AnswersOnly.append(QSet)
 
 import PyPDF2
-pdfFileObj = open('2014.pdf', 'rb')  #2014, 2018, 2022, 2021
+file = "Tests/"+input("What PDF do you want to practice? eg: Business.pdf, Entrepreneurship.pdf, Finance.pdf, Hopitality.pdf, Marketing.pdf, PFL1.pdf, PFL2.pdf, PFL3.pdf, PFL4.pdf ")
+print()
+pdfFileObj = open(file, 'rb') 
 pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
 # creating a page object
 
