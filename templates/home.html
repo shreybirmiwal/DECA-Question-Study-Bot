@@ -1,18 +1,21 @@
-<!doctype html>
-<html>
-    <head>
-        <title>DECA PRO</title>
-    </head>
-    <body>
-        <h1>Welcome to DecaPro</h1>
-			<form action="#" method="post">
-				<p>Pick a test:</p>
-				<p><input type="submit" value="BUSINESS MANAGEMENT + ADMINISTRATION" name="business"/></p>
-				<p><input type="submit" value="HOSPITALITY + TOURISM" name="hospitality"/></p>
-				<p><input type="submit" value="ENTREPRENEURSHIP" name="entrepreneurship"/></p>
-				<p><input type="submit" value="FINANCE" name="finance"/></p>
-				<p><input type="submit" value="MARKETING" name="marketing"/></p>
-				<p><input type="submit" value="PERSONAL FINANCIAL LITERACY" name="personal financial literacy"/></p>
-			</form>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+	<title>DECA PRO</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome to DecaPro</h1>
+    <h3>Venmo: Shrey-Birmiwal<h3>
+    <h3>GitHub: https://github.com/RambaMamba/DECA-Question-Study-Bot<h3>
+
+	<form action="#" method="post">
+		<p>Pick a test:</p>
+		<p><input type="submit" value="BUSINESS MANAGEMENT + ADMINISTRATION" name="business"/></p>
+		<p><input type="submit" value="HOSPITALITY + TOURISM" name="hospitality"/></p>
+		<p><input type="submit" value="ENTREPRENEURSHIP" name="entrepreneurship"/></p>
+		<p><input type="submit" value="FINANCE" name="finance"/></p>
+		<p><input type="submit" value="MARKETING" name="marketing"/></p>
+		<p><input type="submit" value="PERSONAL FINANCIAL LITERACY" name="personal financial literacy"/></p>
+	</form>
+{% endblock %}

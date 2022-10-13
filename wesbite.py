@@ -3,50 +3,36 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 
-@app.route("/business")
-def business():
-	return "<h1>business<h1>"
+@app.route("/<typeOfTest>", methods=["POST", "GET"])
+def test(typeOfTest):
+	if(request.method == "POST"):
+		if request.form.get('home') == "Back to Home":
+			return redirect(url_for("home"))
 
-@app.route("/hospitality")
-def hospitality():
-	return "<h1>hospitality<h1>"
+	return render_template("test.html", testTitle=typeOfTest)
+	
 
-@app.route("/entrepreneurship")
-def entrepreneurship():
-	return "<h1>entrepreneurship<h1>"
-
-@app.route("/finance")
-def finance():
-	return "<h1>finance<h1>"
-
-@app.route("/marketing")
-def marketing():
-	return "<h1>marketing<h1>"
-
-@app.route("/pfl")
-def pfl():
-	return "<h1>personal financial literacy<h1>"
 
 @app.route("/", methods=["POST", "GET"])
 def home():
 	if(request.method == "POST"):
 		if request.form.get('business') == "BUSINESS MANAGEMENT + ADMINISTRATION":
-			return redirect(url_for("business"))
+			return redirect(url_for("test", typeOfTest="Business Management + Administration"))
 
 		if request.form.get('hospitality') == "HOSPITALITY + TOURISM":
-			return redirect(url_for("hospitality"))
+			return redirect(url_for("test", typeOfTest="Hospitality + Tourism"))
 
 		if request.form.get('entrepreneurship') == "ENTREPRENEURSHIP":
-			return redirect(url_for("entrepreneurship"))
+			return redirect(url_for("test",typeOfTest="Entrepreneurship"))
 
 		if request.form.get('finance') == "FINANCE":
-			return redirect(url_for("finance"))
+			return redirect(url_for("test", typeOfTest="Finance"))
 
 		if request.form.get('marketing') == "MARKETING":
-			return redirect(url_for("marketing"))
+			return redirect(url_for("test", typeOfTest="Marketing"))
 
 		if request.form.get('personal financial literacy') == "PERSONAL FINANCIAL LITERACY":
-			return redirect(url_for("pfl"))
+			return redirect(url_for("test", typeOfTest="Personal Finance Literacy"))
 
 	return render_template("home.html")
 
