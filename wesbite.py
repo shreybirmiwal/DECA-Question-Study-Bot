@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import PyPDF2
 
 app = Flask(__name__)
 
@@ -9,7 +10,8 @@ def test(typeOfTest):
 		if request.form.get('home') == "Back to Home":
 			return redirect(url_for("home"))
 
-	return render_template("test.html", testTitle=typeOfTest)
+
+	return render_template("test.html", testTitle=typeOfTest, question="WHAT is 2+2", choice1="A4", choice2="B5", choice3="C8", choice4="D8")
 	
 
 
