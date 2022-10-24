@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
 import PyPDF2
+import re
+import pandas as pd
 
 app = Flask(__name__)
 
+def GetQuestion(test):
+	print(ActualTest)
 
 @app.route("/<typeOfTest>", methods=["POST", "GET"])
 def test(typeOfTest):
@@ -10,8 +14,8 @@ def test(typeOfTest):
 		if request.form.get('home') == "Back to Home":
 			return redirect(url_for("home"))
 
-
-	return render_template("test.html", testTitle=typeOfTest, question="WHAT is 2+2", choice1="A4", choice2="B5", choice3="C8", choice4="D8")
+	ActualTest = pd.read_csv('Tests/'+typeOfTest+'.csv')
+	return render_template("test.html", testTitle=typeOfTest, question=GetQuestion(ActualTest))
 	
 
 
